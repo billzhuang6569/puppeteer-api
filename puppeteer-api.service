@@ -1,0 +1,26 @@
+[Unit]
+Description=Puppeteer API Service
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/opt/puppeteer-api
+ExecStart=/usr/bin/node src/app.js
+Restart=always
+RestartSec=10
+Environment=NODE_ENV=production
+Environment=PORT=8000
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=puppeteer-api
+
+# Security settings
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/opt/puppeteer-api
+
+[Install]
+WantedBy=multi-user.target

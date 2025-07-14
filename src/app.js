@@ -35,7 +35,7 @@ let browser = null;
 async function initBrowser() {
   try {
     browser = await puppeteer.launch({
-      headless: true,
+      headless: "new",
       args: [
         '--no-sandbox',
         '--disable-setuid-sandbox',
